@@ -1,3 +1,4 @@
+import publicNavbar from "./publicNavbar.js";
 import { getUsers } from "../../services/js/getData.js"
 
 export default function registerView() {
@@ -14,7 +15,9 @@ export default function registerView() {
 
     }, 0);
 
-    return `<section class="register_form">
+    return `
+    ${publicNavbar()}
+    <section class="register_form">
         <form class="position-absolute top-50 start-50 translate-middle">
           <label for="exampleFormControlInput1" class="form-label"
             >Username</label
@@ -124,7 +127,8 @@ async function registerUser() {
 
         alert(`Bienvenid, ${fullName}`)
         // redireccional al home si el registro es exitoso
-        window.location.href = "/public/home.html"
+        location.hash = "/home";
+
     }
 }
 

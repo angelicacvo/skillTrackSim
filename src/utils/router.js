@@ -1,7 +1,8 @@
 const routes = {
     "/": async () => await import("../views/components/loginView.js"),
     "/register": async () => await import("../views/components/registerView.js"),
-    "/login": async () => await import("../views/components/loginView.js")
+    "/login": async () => await import("../views/components/loginView.js"),
+    "/home": async () => await import("../views/components/homeView.js"),
 }
 
 export async function router() {

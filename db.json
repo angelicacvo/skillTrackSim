@@ -1,5 +1,12 @@
 {
   "users": [
-    
+    {
+      "id": "3e6e",
+      "fullName": "ange",
+      "email": "ange@gmail.com",
+      "username": "angelica",
+      "password": "123",
+      "rol": "user"
+    }
   ]
 }

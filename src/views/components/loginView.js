@@ -1,6 +1,8 @@
+import publicNavbar from "./publicNavbar.js"
 
 export default function loginView(){
-    return `<section class="register_form">
+    return ` ${publicNavbar()}
+    <section class="register_form">
         <form class="position-absolute top-50 start-50 translate-middle">
           <label for="exampleFormControlInput1" class="form-label"
             >Username or email</label
