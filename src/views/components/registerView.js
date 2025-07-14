@@ -19,7 +19,7 @@ export default function registerView() {
     ${publicNavbar()}
     <section class="register_form">
         <form class="position-absolute top-50 start-50 translate-middle">
-          <label for="exampleFormControlInput1" class="form-label"
+          <label for="username" class="form-label"
             >Username</label
           >
           <div class="input-group mb-3">
@@ -34,7 +34,7 @@ export default function registerView() {
             />
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
+            <label for="fullName" class="form-label"
               >First and last name</label
             >
             <div class="input-group">
@@ -43,7 +43,7 @@ export default function registerView() {
             </div>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
+            <label for="email" class="form-label"
               >Email address</label
             >
             <input
@@ -54,7 +54,7 @@ export default function registerView() {
             />
           </div>
           <div class="mb-3">
-            <label for="inputPassword5" class="form-label">Password</label>
+            <label for="password" class="form-label">Password</label>
             <input
               type="password"
               id="password"
@@ -104,7 +104,7 @@ async function registerUser() {
                     email: email,
                     username: username,
                     password: password,
-                    rol: "user"
+                    role: "user"
                 }),
             });
             // se crea un JSON que guarde al nuevo usuario
@@ -112,7 +112,8 @@ async function registerUser() {
             const newUserData = {
                 "email": newUser.email,
                 "username": newUser.username,
-                "fullName": newUser.fullName
+                "fullName": newUser.fullName,
+                "role": newUser.role
             }
             // guardar en la sessionStorage la info de registro de usuario
             // si es exitoso se pone en true el auth
@@ -120,12 +121,11 @@ async function registerUser() {
             // guardar en user un objeto con los datos que contiene exists ((user) => user.email === email || user.username === username)
             // se agrega el newUser a la sessionStorage
             sessionStorage.setItem("user", JSON.stringify(newUserData))
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
 
-        alert(`Bienvenid, ${fullName}`)
+        alert(`Welcome, ${fullName}`)
         // redireccional al home si el registro es exitoso
         location.hash = "/home";
 

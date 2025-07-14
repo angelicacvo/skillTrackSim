@@ -1,27 +1,38 @@
+import { getUsers } from "../../services/js/getData.js";
 import publicNavbar from "./publicNavbar.js"
 
-export default function loginView(){
-    return ` ${publicNavbar()}
+export default function loginView() {
+    // para que espere hasta que recargue el dom
+    setTimeout(() => {
+        const loginButton = document.getElementById("loginButton")
+        if (loginButton) {
+            loginButton.addEventListener("click", async (e) => {
+                // para prevenir que se recargue la pagina
+                e.preventDefault();
+                login();
+            })
+        }
+
+    }, 0);
+
+    return `
+    ${publicNavbar()}
     <section class="register_form">
         <form class="position-absolute top-50 start-50 translate-middle">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Username or email</label
-          >
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
+          <label for="email" class="form-label"
+              >Email address</label
+            >
             <input
-              type="text"
+              type="email"
               class="form-control"
-              placeholder="Username"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
+              id="email"
+              placeholder="name@example.com"
             />
-          </div>
           <div class="mb-3">
-            <label for="inputPassword5" class="form-label">Password</label>
+            <label for="password" class="form-label">Password</label>
             <input
               type="password"
-              id="inputPassword5"
+              id="password"
               class="form-control"
               aria-describedby="passwordHelpBlock"
             />
@@ -30,14 +41,53 @@ export default function loginView(){
               numbers, and must not contain spaces, special characters, or
               emoji.
             </div>
-          </div> 
-          <!-- cambiar ruta de login -->
-          <a href=""
-            ><button type="button" class="btn btn-primary">Login</button></a
+          </div>
+            <button id="loginButton" type="button" class="btn btn-primary">Login</button>
+          <a href="#/register" data-link
+            >Don't you have an account? Register</a
           >
-          <a href="#/register">Don't you have an account? Register</a>
         </form>
       </section>`
 }
+
+async function login() {
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+    const users = await getUsers()
+    // se hace una verificacion de que coincida lo que encuentra en la bd con username o email 
+    // con lo que ingresas en el input del html
+    const exists = users.find(
+        (user) => user.email === email && user.password === password ||
+            user.username === email && user.password === password
+    )
+
+    if (!email || !password) {
+        alert("Fill all fields")
+    } else if (exists) {
+        alert(`Welcome, ${exists.fullName}`)
+        // para que el objeto del session storage se lea
+        const registeredUserData = {
+            "email": exists.email,
+            "username": exists.username,
+            "fullName": exists.fullName,
+            "role": exists.role
+        }
+         if(exists.role === "admin"){
+              location.hash = "/admin";      
+            }
+            else{
+              location.hash = "/home";
+            }
+        // guardar en la sessionStorage la info de login de usuario
+        // si es exitoso se pone en true el auth
+        sessionStorage.setItem("auth", "true")
+        // guardar en user un objeto con los datos que contiene exists ((user) => user.email === email || user.username === email)
+        // se agrega el registeredUserData a la sessionStorage para que se lean los valores y pueda utilizarlos en el dom
+        sessionStorage.setItem("user", JSON.stringify(registeredUserData))
+    } else {
+        alert("Wrong data. Please enter the right data")
+    }
+}
+
 
 

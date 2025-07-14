@@ -3,6 +3,7 @@ const routes = {
     "/register": async () => await import("../views/components/registerView.js"),
     "/login": async () => await import("../views/components/loginView.js"),
     "/home": async () => await import("../views/components/homeView.js"),
+    "/admin": async () => await import("../views/components/adminView.js"),
 }
 
 export async function router() {
@@ -13,5 +14,4 @@ export async function router() {
     const view = await viewFunc();
     // se inyecta la vista html sin recargar la pagina en el content ej <main id="content"></main>
     document.getElementById("content").innerHTML = view.default()
-
 }

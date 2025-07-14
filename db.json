@@ -1,12 +1,20 @@
 {
   "users": [
     {
-      "id": "3e6e",
-      "fullName": "ange",
-      "email": "ange@gmail.com",
+      "id": "b81b",
+      "fullName": "angelica",
+      "email": "angelica@gmail.com",
       "username": "angelica",
       "password": "123",
-      "rol": "user"
+      "role": "admin"
+    },
+    {
+      "id": "8566",
+      "fullName": "a",
+      "email": "a@gmail.com",
+      "username": "a",
+      "password": "123",
+      "role": "user"
     }
   ]
 }
