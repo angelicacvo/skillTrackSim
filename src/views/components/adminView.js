@@ -118,7 +118,7 @@ async function addCourse() {
     const courseDescription = document.getElementById("courseDescription").value
     let date = new Date().toLocaleString("es-CO");
     const courses = await getCourses()
-    
+
     // some busca y devuelve true (si existe) o false si no 
     const exists = courses.some(
         (course) => course.name === courseTitle
@@ -158,7 +158,7 @@ async function courses() {
         coursesContainer.innerHTML +=
             `
             <div class="col-md-4">
-                <div class="card h-100">
+                <div class="card h-100" >
                     <div class="ratio ratio-1x1">
                         <img src="${course.image}" class="card-img-top h-10 w-18rem" alt="courseImg">
                     </div>
@@ -166,12 +166,44 @@ async function courses() {
                         <h5 class="card-title">${course.title}</h5>
                         <p class="card-text">${course.description}</p>
                         <p class="card-text"><small class="text-body-secondary">Published: ${course.date}</small></p>
+                    <button class="btn btn-danger mt-2" onclick="deleteCourse('${course.id}')">Eliminar</button>
+            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#miModal2" onclick="cargarProducto('${course.id}')">Actualizar</button>
                 </div>
+                     
             </div>
+        
         `
     });
 
 }
+
+
+async function deleteCourse(id) {
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this course?"
+  );
+  if (!confirmDelete) {
+    alert("Operation cancelled");
+    return;
+  }
+  try {
+    const res = await fetch(`http://localhost:3000/courses/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (res.ok) {
+      alert("Course deleted successfully");
+    } else {
+      alert("Error cancelling the course");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+window.deleteCourse = deleteCourse;
+
+
 
 
 
