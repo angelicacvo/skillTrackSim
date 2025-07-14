@@ -32,6 +32,7 @@ skillTrackSim/
 
 ¿como funciona?
 se instala primero que todo json-server
+npx json-server db.json
 
 se hace primero el SPA
 1. se crea la vista del contenido (por ejemplo registerView.js que está en views->components) y la exporto como un default que es para una vista por defecto (esto es para todas las vistas) y le doy un return con el contenido de la página*

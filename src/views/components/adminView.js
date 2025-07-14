@@ -1,5 +1,5 @@
 import adminNavbar from "./adminNavbar.js";
-import { redirectIfNotLoggedIn } from "../../utils/routerGuard.js";
+import { protectAdminRoute } from "../../utils/routerGuard.js";
 
 export default function adminView() {
     // botón para salir de la sesión
@@ -12,7 +12,7 @@ export default function adminView() {
             });
         }
     }, 0);
-    if (!redirectIfNotLoggedIn()) return "";
+    if (!protectAdminRoute()) return "";
     return `
         ${adminNavbar()}
      `;
