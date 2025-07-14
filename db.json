@@ -16,5 +16,20 @@
       "password": "123",
       "role": "user"
     }
+  ],
+  "courses": [
+    {
+      "id": "af0b",
+      "title": "aaa",
+      "image": "https://i.pinimg.com/564x/a9/f9/09/a9f90926afdfbff79f6d2a017c8e19dd.jpg",
+      "description": "asdas"
+    },
+    {
+      "id": "1fdb",
+      "title": "asdsa",
+      "image": "https://i.pinimg.com/564x/d7/80/50/d78050127adffd498add0b94ae0e878c.jpg",
+      "description": "asdas",
+      "date": "14/7/2025, 1:14:34 a. m."
+    }
   ]
 }

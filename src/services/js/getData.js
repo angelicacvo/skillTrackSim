@@ -10,3 +10,14 @@ export async function getUsers() {
     }
     
 }
+
+export async function getCourses() {
+    try {
+        const res = await fetch("http://localhost:3000/courses");
+        const courses = await res.json();
+        return courses;
+    }catch (error){
+        console.log(error);
+    }
+    
+}

@@ -1,19 +1,4 @@
 // guardian de la ruta, verifica que esté autenticado en true
-// export function isAuthenticated() {
-//   return sessionStorage.getItem("auth") === "true";
-// }
-
-// export function redirectIfNotLoggedIn() {
-//   const isAuth = isAuthenticated();
-
-//   if (!isAuth) {
-//     location.hash = "/login";
-//     return false;
-//   }
-
-//   return true;
-// }
-
 // nueva
 
 export function isAuthenticated() {
@@ -46,7 +31,7 @@ export function protectAdminRoute() {
     }
 
     if (user.role !== "admin") {
-        alert("Solo los administradores pueden acceder aquí.");
+        alert("Only admin can access here.");
         location.hash = "/home";
         return false;
     }

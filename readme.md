@@ -49,7 +49,9 @@ en getData cree una funcion llamada getUsers que trae todos los usuarios y la ex
 En las vistas (views) va todo lo relacionado con eso (como los posts, eventos de los botones, etc)
 vista registerView: se hace el post, las verificaciones y el redireccionamiento si es exitoso y se settea la session storage que auth sea true, lo que significa que se registró el nuevo usuario en el json
 vista loginView: se verifica que exista en users el usuario y se settea la session storage que auth sea true, lo que significa que si existe en el json(bd)
-crear una vista para adminView donde solo aparezca lo que él puede ver y se crea una navbar solamente para el admin que muestre home y administrar la plataforma, despues se pone adentro todo lo que se va a renderizar
+crear una vista para adminView donde solo aparezca lo que él puede ver y se crea una navbar solamente para el admin que muestre home y administrar la plataforma, despues se pone adentro todo lo que se va a renderizar, en esta misma vista voy a crear todas las funciones que va a ejecutar el admin, como traer todos los cursos, eliminarlos, crear uno nuevo, etc
+
+homeview va a contener todo lo que el usuario (estudiante) puede ver cuando ingrese
 
 <!-- navbars -->
 para que sea SPA se crean dos tipos de navbars, una publica y una privada y se invocan en los archivos antes de hacer el registro/login y en el home que es donde trae toda la información despues de hacer el registro, se creó private navbar para las rutas despues de autenticas y para las de antes de autenticar (login y register)
